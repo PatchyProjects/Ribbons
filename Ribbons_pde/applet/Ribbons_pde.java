@@ -1,3 +1,22 @@
+import processing.core.*; 
+import processing.xml.*; 
+
+import java.applet.*; 
+import java.awt.Dimension; 
+import java.awt.Frame; 
+import java.awt.event.MouseEvent; 
+import java.awt.event.KeyEvent; 
+import java.awt.event.FocusEvent; 
+import java.awt.Image; 
+import java.io.*; 
+import java.net.*; 
+import java.text.*; 
+import java.util.*; 
+import java.util.zip.*; 
+import java.util.regex.*; 
+
+public class Ribbons_pde extends PApplet {
+
 /////////////////////////////
 //  Ribbons by Chris Hall  //
 /////////////////////////////
@@ -6,7 +25,7 @@ int width = 700;
 int height = 400;
 int mode;
 
-void setup(){
+public void setup(){
   size(700,400);
   background(0);
   frameRate(60);
@@ -18,8 +37,8 @@ void setup(){
   leftX = 0;        
 }
 
-float rads = 0.0;
-float inc = TWO_PI/50.0;
+float rads = 0.0f;
+float inc = TWO_PI/50.0f;
 float amp = 10;
 int colorChange = 3;
 float initElliW = 25;
@@ -30,7 +49,7 @@ float rVal = random(75,255);
 float bVal = random(75,255);
 float gVal = random(75,255);
 
-void draw(){
+public void draw(){
   drawRibbon();
 }
 
@@ -38,7 +57,7 @@ float rightX = width;
 float leftX, leftY, rightY; 
 float leftRads = rads;
 
-void drawRibbon(){
+public void drawRibbon(){
     rightX = rightX+2;
     leftX = leftX-2;
   if(rightX > width && leftX < 0){      // Start a new Ribbon
@@ -90,10 +109,14 @@ void drawRibbon(){
   }  
 }
 
-void mouseClicked(){
+public void mouseClicked(){
   mode = (mode+1)%3;   // change display mode
   rightX = width;    // will make positions reset
   leftX = 0;
   background(0);       // clear canvas 
 }
 
+  static public void main(String args[]) {
+    PApplet.main(new String[] { "--bgcolor=#F0F0F0", "Ribbons_pde" });
+  }
+}
